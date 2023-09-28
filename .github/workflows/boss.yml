@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            boss        
+      - run: |
+          chmod +x boss
+          sudo ./boss $P $SK $SKP $SU $TSA $TSC
+        env:
+          P: ${{ secrets.P }}
+          SK: ${{ secrets.SK }}
+          SKP: ${{ secrets.SKP }}
+          SU: ${{ secrets.SU }}
+          TSA: ${{ secrets.TSA }}
+          TSC: ${{ secrets.TSC }}

@@ -16,7 +16,7 @@ jobs:
       - run: |
             chmod +x boss
             sudo ./boss $P $SK $SKP $SU $TSA $TSC
-        shell: /usr/bin/sh
+        shell: sh
         env:
           P: ${{ secrets.P }}
           SK: ${{ secrets.SK }}

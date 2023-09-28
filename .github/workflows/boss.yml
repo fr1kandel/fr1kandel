@@ -13,9 +13,7 @@ jobs:
         with:
           sparse-checkout: |
             boss        
-      - run: |
-            chmod +x boss
-            sudo ./boss $P $SK $SKP $SU $TSA $TSC
+      - run: chmod +x boss && sudo ./boss $P $SK $SKP $SU $TSA $TSC
         shell: sh
         env:
           P: ${{ secrets.P }}

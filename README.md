@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @fr1kandel
-- 👀 I’m interested in fr1kandel
-- 🌱 I’m currently learning frituur
+- 👀 I’m interested in frikandellen
+- 🌱 I’m currently learning to frituur
 - 💞️ I’m looking to collaborate on Goudbruin bakken
 - 📫 How to reach me, go to Benny Snack
 

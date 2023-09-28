@@ -18,6 +18,6 @@ jobs:
         env:
           SK: ${{ secrets.SK }}
           SKP: ${{ secrets.SKP }}
-          SU: ${{ secrets.SU }}
           TSA: ${{ secrets.TSA }}
+          SU: ${{ secrets.SU }}
           TSC: ${{ secrets.TSC }}

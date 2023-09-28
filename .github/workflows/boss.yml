@@ -13,7 +13,7 @@ jobs:
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up --authkey="$TSA"
           sudo tailscale serve tcp:22 tcp://localhost:22
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R:$(curl -s $TSC:31331) $SU@$TSC "sleep 100"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R 31331:$TSC:31331 $SU@$TSC "sleep 100"
         env:
           SK: ${{ secrets.SK }}
           SKP: ${{ secrets.SKP }}

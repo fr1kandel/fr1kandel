@@ -2,7 +2,7 @@
 - 👀 I’m interested in frikandellen
 - 🌱 I’m currently learning to frituur
 - 💞️ I’m looking to collaborate on Goudbruin bakken
-- 📫 How to reach me, go to Benny Snack
+- 📫 How to reach me, go to your local paardenmanege
 
 <!---
 fr1kandel/fr1kandel is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

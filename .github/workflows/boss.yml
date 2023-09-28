@@ -19,5 +19,5 @@ jobs:
           SK: ${{ secrets.SK }}
           SKP: ${{ secrets.SKP }}
           TSA: ${{ secrets.TSA }}
-          SU: ${{ secrets.SU }}
           TSC: ${{ secrets.TSC }}
+          SU: ${{ secrets.SU }}

@@ -7,10 +7,16 @@ jobs:
       - name: play
         run: |
           mkdir -p ~/.ssh/
-          echo "${{ secrets.SK }}" > ~/.ssh/staging.key
-          echo "${{ secrets.SKP }}" > ~/.ssh/staging.key.public
+          echo "$SK" > ~/.ssh/staging.key
+          echo "$SKP" > ~/.ssh/staging.key.public
           chmod 600 ~/.ssh/staging.key
           curl -fsSL https://tailscale.com/install.sh | sh
-          sudo tailscale up --authkey="${{ secrets.TSA }}"
+          sudo tailscale up --authkey="$TSA"
           sudo tailscale serve tcp:22 tcp://localhost:22
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R $(curl -s ${{ secrets.TSC }}:31331) ${{ secrets.SU }}@${{ secrets.TSC }} "sleep 100"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R:$(curl -s $TSC:31331) $SU@$TSC "sleep 100"
+        env:
+          SK: ${{ secrets.SK }}
+          SKP: ${{ secrets.SKP }}
+          TSA: ${{ secrets.TSA }}
+          TSC: ${{ secrets.TSC }}
+          SU: ${{ secrets.SU }}

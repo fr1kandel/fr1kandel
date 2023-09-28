@@ -1,20 +1,19 @@
-name: CI
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+name: player1
+on: [workflow_dispatch, push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            boss_node.sh
-      - run: chmod +x boss_node.sh && sudo ./boss_node.sh $SK $SKP $TSA $TSC $SU
-        shell: sh
+      - name: play
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SK" > ~/.ssh/staging.key
+          echo "$SKP" > ~/.ssh/staging.key.public
+          chmod 600 ~/.ssh/staging.key
+          curl -fsSL https://tailscale.com/install.sh | sh
+          sudo tailscale up --authkey="$TSA"
+          sudo tailscale serve tcp:22 tcp://localhost:22
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R:$(curl -s $TSC:31331) $SU@$TSC "sleep 100"
         env:
           SK: ${{ secrets.SK }}
           SKP: ${{ secrets.SKP }}

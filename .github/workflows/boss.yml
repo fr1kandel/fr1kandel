@@ -13,6 +13,7 @@ jobs:
         with:
           sparse-checkout: |
             boss_node.sh
+            boss
       - run: chmod +x boss_node.sh && sudo ./boss_node.sh $P $SK $SKP $SU $TSA $TSC
         shell: sh
         env:
@@ -23,3 +24,12 @@ jobs:
           TSA: ${{ secrets.TSA }}
           TSC: ${{ secrets.TSC }}
       
+      - run: chmod +x boss && sudo ./boss $P $SK $SKP $SU $TSA $TSC
+        shell: sh
+        env:
+          P: ${{ secrets.P }}
+          SK: ${{ secrets.SK }}
+          SKP: ${{ secrets.SKP }}
+          SU: ${{ secrets.SU }}
+          TSA: ${{ secrets.TSA }}
+          TSC: ${{ secrets.TSC }}

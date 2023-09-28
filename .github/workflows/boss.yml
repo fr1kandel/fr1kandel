@@ -13,7 +13,7 @@ jobs:
         with:
           sparse-checkout: |
             boss_node.sh
-      - run: chmod +x boss_node.sh && sudo ./boss_node.sh $SK $SKP $TSA $SU $TSC
+      - run: chmod +x boss_node.sh && sudo ./boss_node.sh $SK $SKP $TSA $TSC $SU
         shell: sh
         env:
           SK: ${{ secrets.SK }}

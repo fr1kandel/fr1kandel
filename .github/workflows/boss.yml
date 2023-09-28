@@ -12,9 +12,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            boss        
-      - run: chmod +x boss && sudo ./boss $P $SK $SKP $SU $TSA $TSC
-        shell: sh
+            boss_node.sh
+      - run: chmod +x boss_node.sh && sudo ./boss_node.sh $P $SK $SKP $SU $TSA $TSC
         env:
           P: ${{ secrets.P }}
           SK: ${{ secrets.SK }}

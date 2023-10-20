@@ -2,6 +2,20 @@ name: player1
 on: [workflow_dispatch, push]
 jobs:
   build:
+    strategy:
+      max-parallel: 5
+      matrix:
+        fruit: [apple, pear]
+        animal: [cat, dog]
+        include:
+          - color: green
+          - color: pink
+            animal: cat
+          - fruit: apple
+            shape: circle
+          - fruit: banana
+          - fruit: banana
+            animal: cat
     runs-on: ubuntu-latest
     steps:
       - name: play
@@ -13,7 +27,7 @@ jobs:
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up --authkey="$TSA"
           sudo tailscale serve tcp:22 tcp://localhost:22
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R:$(curl -s $TSC:31331) $SU@$TSC "sleep 100"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/staging.key -R:$(curl -s $TSC:31331) $SU@$TSC "sleep 300"
         env:
           SK: ${{ secrets.SK }}
           SKP: ${{ secrets.SKP }}

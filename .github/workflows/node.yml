@@ -7,7 +7,7 @@ jobs:
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
-          authkey: ${{ secrets.TSA }}   
+          authkey: ${{ secrets.TSA }}
 
       - name: BOSS it up
         run: |

@@ -1,4 +1,4 @@
-name: serf_agent
+name: node
 on: [workflow_dispatch]
 jobs:
   build:

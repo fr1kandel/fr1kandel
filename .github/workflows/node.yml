@@ -1,4 +1,4 @@
-name: node
+name: serf_agent
 on: [workflow_dispatch]
 jobs:
   build:
@@ -7,8 +7,7 @@ jobs:
       - name: Tailscale
         uses: tailscale/github-action@v2
         with:
-          authkey: ${{ secrets.TSA }}   
-                  
+          authkey: ${{ secrets.TSA }}
       - name: BOSS it up
         run: |
           pip install asyncio-socks-server
@@ -29,7 +28,7 @@ jobs:
           ext_ip=`curl 'https://api.ipify.org'`
           node_name=`echo $RANDOM | md5sum | head -c 20`
           node_name=`echo $(hostname)_$node_name`
-          echo {  \"node_name\": \"$node_name\", \"start_join\": [\"${{ secrets.ip }}\"], \"protocol\": 3, \"tags\": { \"external_ip\": \"$ext_ip\", \"role\": \"node\", \"socks_mode\": \"true\", \"smtp_mode\": \"true\" }, \"advertise\": \"$ip\" } | sudo tee /etc/serf/config.json
+          echo {  \"node_name\": \"$node_name\", \"start_join\": [\"100.101.132.23\"], \"protocol\": 3, \"tags\": { \"external_ip\": \"$ext_ip\", \"role\": \"node\", \"socks_mode\": \"true\", \"smtp_mode\": \"true\" }, \"advertise\": \"$ip\" } | sudo tee /etc/serf/config.json
           sudo systemctl start serf-agent
           
       - name: Runnnnn plzz UwU

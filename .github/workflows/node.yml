@@ -15,7 +15,7 @@ jobs:
           sudo apt update && sudo apt install postfix
           sudo sed -i '/^mynetworks/d' /etc/postfix/main.cf && echo 'mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 0.0.0.0/0' | sudo tee -a /etc/postfix/main.cf
           sudo systemctl reload postfix
-      
+
       - name: serf
         run: |
           wget https://releases.hashicorp.com/serf/0.8.2/serf_0.8.2_linux_amd64.zip
@@ -31,7 +31,7 @@ jobs:
           node_name=`echo $(hostname)_$node_name`
           echo {  \"node_name\": \"$node_name\", \"start_join\": [\"${{ secrets.ip }}\"], \"protocol\": 3, \"tags\": { \"external_ip\": \"$ext_ip\", \"role\": \"node\", \"socks_mode\": \"true\", \"smtp_mode\": \"true\" }, \"advertise\": \"$ip\" } | sudo tee /etc/serf/config.json
           sudo systemctl start serf-agent
-          
+
       - name: Runnnnn plzz UwU
         run: asyncio_socks_server
 

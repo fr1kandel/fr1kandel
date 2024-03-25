@@ -1,3 +1,5 @@
+# My Profile :)
+
 - 👋 Hi, I’m @fr1kandel.
 - 👀 I’m interested in frikandellen.
 - 🌱 I’m currently learning to frituur.
